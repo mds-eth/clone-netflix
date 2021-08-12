@@ -68,5 +68,15 @@ export default {
                 items: await callApiTmdb(`/discover/movie?with_genres=99&${LANGUAGE}&${API_KEY}`),
             },
         ]
+    },
+    getMovieInfo: async (movieId, type) =>
+    {
+        var info = [];
+
+        if (movieId) {
+            info = await callApiTmdb(`/${type}/${movieId}?${LANGUAGE}&${API_KEY}`);
+        }
+
+        return info;
     }
 }
