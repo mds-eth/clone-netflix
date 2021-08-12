@@ -12,6 +12,7 @@ import Footer from './pages/Footer';
 function App()
 {
     const [movieList, setMovieList] = useState([]);
+    const [blackHeader, setBlackHeader] = useState(false);
     const [featuredData, setFeaturedData] = useState(null);
 
     useEffect(() =>
@@ -30,22 +31,46 @@ function App()
 
             const chosenMovie = results[randomChosen];
 
-            const chosenInfo = await Tmdb.getMovieInfo(chosenMovie.id, 'tv');
+            if (chosenMovie.backdrop_path !== null) {
+                const chosenInfo = await Tmdb.getMovieInfo(chosenMovie.id, 'tv');
 
-            setFeaturedData(chosenInfo);
+                setFeaturedData(chosenInfo);
+            }
         }
 
         loadAll();
     }, []);
+
+    useEffect(() =>
+    {
+        const scrollListener = () =>
+        {
+            if (window.scrollY > 10) {
+                setBlackHeader(true)
+            } else {
+                setBlackHeader(false);
+            }
+        }
+
+        window.addEventListener('scroll', scrollListener);
+
+        return () =>
+        {
+            window.removeEventListener('scroll', scrollListener);
+        }
+
+    }, []);
     return (
         <>
-            <Header />
+            <Header black={blackHeader} />
             {featuredData ? <FeaturedMovie featured={featuredData} /> : ''}
             <section className="list-movies">
                 {movieList.map((movie, key) => (
                     <ListMovies key={key} title={movie.title} movie={movie.items} />
                 ))}
             </section>
+
+            <Footer />
         </>
     );
 }

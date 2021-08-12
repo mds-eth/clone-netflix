@@ -4,18 +4,6 @@ const BASE_URL = 'https://api.themoviedb.org/3';
 
 const LANGUAGE = 'language=pt-BR';
 
-/**
- * 1 - originais netflix
- * 2 - recomendados em destaque (trending)
- * 3 - em alta (top rated)
- * 4 - ação
- * 5 - comedia
- * 6 - terror
- * 7 - documentarios
- * 8  - romance
- */
-
-
 const callApiTmdb = async (endPoint) =>
 {
     const req = await fetch(`${BASE_URL}${endPoint}`);

@@ -1,0 +1,29 @@
+header {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    height: 70px;
+    align-items: center;
+    padding: 0 30px;
+    background: transparent;
+    transition: all ease 0.5s;
+}
+
+.black {
+    background-color: #141414;
+}
+
+.img-netflix {
+    width: 8%;
+    height: 40px;
+    border-radius: 3px;
+}
+
+.img-user {
+    height: 50px;
+    border-radius: 5px;
+}
