@@ -1,13 +1,23 @@
 footer {
     width: 100%;
-    height: 100px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
+#first {
+    color: red;
+}
+
 footer span {
     color: red;
     font-weight: bold;
+}
+
+footer p a {
+    font-weight: bold;
+    text-decoration: none;
+    color: inherit;
 }
